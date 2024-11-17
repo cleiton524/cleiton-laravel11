@@ -22,7 +22,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //rota admin
-route::get('Admin/dashboard',[AdminController::class, 'dashboard'])->middleware('auth')->name('admin.dashboard');
+route::get('Admin/dashboard',[AdminController::class, 'dashboard'])
+->middleware(['auth', 'admin'])
+->name('admin.dashboard');
 
 //rota vendedor
-route::get('vendor/dashboard',[VendorController::class, 'dashboard'])->middleware('auth')->name('vendor.dashboard');
+route::get('vendor/dashboard',[VendorController::class, 'dashboard'])
+->middleware(['auth', 'vendor'])
+->name('vendor.dashboard');
