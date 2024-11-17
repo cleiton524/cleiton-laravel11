@@ -17,9 +17,10 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         // Verifica se o usuário está autenticado e se o papel é 'admin'
-        if (Auth::user)->role != 'admin') {
-            return redirect('/); // Permite continuar
-        }
+if (!Auth::check() || Auth::user()->role !== 'admin') {
+    return redirect('/'); // Redireciona para a página inicial
+}
+
 
         // Redireciona para uma página de erro ou login, se necessário
         return redirect('login')->with('error', 'Acesso negado. Somente administradores podem acessar.');
