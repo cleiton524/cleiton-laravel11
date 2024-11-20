@@ -9,7 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
+{
     Schema::create('users', function (Blueprint $table) {
         $table->id();
         $table->string('name');
@@ -17,14 +18,13 @@ return new class extends Migration
         $table->text('image')->nullable();
         $table->string('phone')->nullable();
         $table->enum('role', ['admin', 'vendor', 'user'])->default('user');
-        $table->enum('status', ['active', 'inative'])->default('active');
+        $table->enum('status', ['active', 'inactive'])->default('active');
         $table->string('email')->unique();
         $table->timestamp('email_verified_at')->nullable();
         $table->string('password');
         $table->rememberToken();
         $table->timestamps();
-    }); // Corrigido: fechamento correto do Schema::create
-
+    });
 
     Schema::create('password_reset_tokens', function (Blueprint $table) {
         $table->string('email')->primary();

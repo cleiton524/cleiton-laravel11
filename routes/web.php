@@ -27,6 +27,6 @@ route::get('Admin/dashboard',[AdminController::class, 'dashboard'])
 ->name('admin.dashboard');
 
 //rota vendedor
-route::get('vendor/dashboard',[VendorController::class, 'dashboard'])
+route::get('vendor/dashboard',[VendorControllerr::class, 'dashboard'])
 ->middleware(['auth', 'vendor'])
 ->name('vendor.dashboard');
